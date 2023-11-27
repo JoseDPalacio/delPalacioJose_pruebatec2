@@ -20,6 +20,19 @@ public class Controladora {
         control.crearCiudadano(ciudadano);
     }
     
+    //Metodo que recoge los datos del ciudadano de la vista y los procesa para insertar en la BBDD
+    public void aniadirCiudadano(String nombre, String apellido, String dni){
+        Ciudadano ciudadano = new Ciudadano();
+        ciudadano.setNombre(nombre);
+        ciudadano.setApellido(apellido);
+        ciudadano.setDni(dni);
+        Ciudadano ciudComaparador = verCiudadanoConcreto(nombre, apellido, dni);
+        //Comprobar si la tabla tiene datos o si ya existe el ciudadano
+        if(control.verCiudadanos().isEmpty() || !compararCiuadano(ciudadano, ciudComaparador)){
+            control.crearCiudadano(ciudadano);
+        }
+    }
+    
     public List<Ciudadano> verCiudadanos(){
         return control.verCiudadanos();
     }
@@ -37,9 +50,25 @@ public class Controladora {
                 .findFirst().get();
     }
     
+    public boolean compararCiuadano(Ciudadano ciud, Ciudadano comp){
+        return ciud.getNombre().equalsIgnoreCase(comp.getNombre())&&
+                ciud.getApellido().equalsIgnoreCase(comp.getApellido())&&
+                ciud.getDni().equalsIgnoreCase(comp.getDni());
+    }
+    
     //control Turno
     public void crearTurno(Turno turno){
         control.crearTurno(turno);
+    }
+    
+    public void aniadirTurno(LocalDate fecha, String descripcion, String nombreC, String apellidoC, String dniC){
+        Turno turno = new Turno();
+        turno.setFecha(fecha);
+        turno.setDescripcion(descripcion);
+        turno.setEstado("En espera");
+        turno.setCiudadano(verCiudadanoConcreto(nombreC, apellidoC, dniC));
+        
+        crearTurno(turno);
     }
     
     public List<Turno> verTurnos(){

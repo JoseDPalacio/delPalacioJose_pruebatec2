@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -20,7 +21,11 @@ public class Turno implements Serializable{
     private String estado;
     
     @ManyToOne
-    @JoinColumn(name = "ciudadano_id")
+    @JoinColumns({
+        @JoinColumn(name = "ciudadano_nombre", referencedColumnName = "nombre"),
+        @JoinColumn(name = "ciudadano_apellido", referencedColumnName = "apellido"),
+        @JoinColumn(name = "ciudadano_dni", referencedColumnName = "dni")
+    })
     private Ciudadano ciudadano;
 
     public Turno() {
