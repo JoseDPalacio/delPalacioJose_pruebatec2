@@ -28,6 +28,15 @@ public class Controladora {
         return control.verCiudadanos().stream().filter(ciudadano -> ciudadano.getId()==id).toList();
     }
     
+    public Ciudadano verCiudadanoConcreto(String nombre, String apellido, String dni){
+        return control.verCiudadanos().stream()
+                .filter(ciudadano->
+                    ciudadano.getNombre().equalsIgnoreCase(nombre) &&
+                    ciudadano.getApellido().equalsIgnoreCase(apellido) &&
+                    ciudadano.getDni().equalsIgnoreCase(dni))
+                .findFirst().get();
+    }
+    
     //control Turno
     public void crearTurno(Turno turno){
         control.crearTurno(turno);

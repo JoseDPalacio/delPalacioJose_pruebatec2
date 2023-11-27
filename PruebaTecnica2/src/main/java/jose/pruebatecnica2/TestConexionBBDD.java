@@ -37,9 +37,9 @@ public class TestConexionBBDD {
 //        turno.setId(1L);
 //        control.editarTurno(turno);
 
-        turno = control.verTurnos().get(0);
-        turno.setEstado("Ya atendidio");
-        System.out.println(turno);
-        control.editarTurno(turno);
+//        turno = control.verTurnos().get(0);
+//        turno.setEstado("Ya atendidio");
+//        System.out.println(turno);
+//        control.editarTurno(turno);
     }
 }
