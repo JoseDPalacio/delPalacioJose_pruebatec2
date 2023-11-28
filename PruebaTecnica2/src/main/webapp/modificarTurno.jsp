@@ -11,8 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
     </head>
-    <body>
+    <body class="modificar-estado">
         <h2>Datos Recogidos de la Fila</h2>
 
         <% Turno turno = (Turno) request.getAttribute("turno");%>

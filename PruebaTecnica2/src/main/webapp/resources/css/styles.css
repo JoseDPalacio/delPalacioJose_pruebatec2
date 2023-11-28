@@ -1,0 +1,121 @@
+/* styles_combined.css */
+
+/* Estilos para la página "Crear Turno" */
+body.crear-turno {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+form.crear-turno {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2.crear-turno {
+    color: #333;
+}
+
+label.crear-turno {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input.crear-turno {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button.crear-turno {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.crear-turno:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para la página "Datos del Turno" */
+body.datos-turno {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h2.datos-turno {
+    color: #007bff;
+}
+
+p.datos-turno {
+    margin-bottom: 8px;
+}
+
+form.datos-turno {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+input[type="hidden"].datos-turno {
+    display: none;
+}
+
+button.datos-turno {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.datos-turno:hover {
+    background-color: #218838;
+}
+
+/* Estilos para la página "Modificar Estado" */
+body.modificar-estado {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background-color: #e9ecef;
+    color: #333;
+}
+
+h2.modificar-estado {
+    color: #dc3545;
+}
+
+form.modificar-estado {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label.modificar-estado {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="hidden"].modificar-estado {
+    display: none;
+}
+
+button.modificar-estado {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.modificar-estado:hover {
+    background-color: #0056b3;
+}
+

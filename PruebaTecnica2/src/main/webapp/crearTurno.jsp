@@ -10,8 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Crear Turno</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
     </head>
-    <body>
+    <body class="crear-turno">
         <form action="CrearTurnoSv" method="post">
             <h2>Datos del Ciudadano</h2>
             <!-- Div para los datos del ciudadano -->
