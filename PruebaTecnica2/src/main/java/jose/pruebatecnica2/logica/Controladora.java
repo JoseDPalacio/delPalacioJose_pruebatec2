@@ -13,77 +13,84 @@ import jose.pruebatecnica2.persistencia.ControladoraPersistencia;
  * @author Usuario
  */
 public class Controladora {
+
     ControladoraPersistencia control = new ControladoraPersistencia();
-    
+
     //control Ciudadano
-    public void crearCiudadano(Ciudadano ciudadano){
+    public void crearCiudadano(Ciudadano ciudadano) {
         control.crearCiudadano(ciudadano);
     }
-    
+
     //Metodo que recoge los datos del ciudadano de la vista y los procesa para insertar en la BBDD
-    public void aniadirCiudadano(String nombre, String apellido, String dni){
+    public void aniadirCiudadano(String nombre, String apellido, String dni) {
         Ciudadano ciudadano = new Ciudadano();
         ciudadano.setNombre(nombre);
         ciudadano.setApellido(apellido);
         ciudadano.setDni(dni);
         Ciudadano ciudComaparador = verCiudadanoConcreto(nombre, apellido, dni);
         //Comprobar si la tabla tiene datos o si ya existe el ciudadano
-        if(control.verCiudadanos().isEmpty() || !compararCiuadano(ciudadano, ciudComaparador)){
+        if (control.verCiudadanos().isEmpty() || !compararCiuadano(ciudadano, ciudComaparador)) {
             control.crearCiudadano(ciudadano);
         }
     }
-    
-    public List<Ciudadano> verCiudadanos(){
+
+    public List<Ciudadano> verCiudadanos() {
         return control.verCiudadanos();
     }
-    
-    public List<Ciudadano> verCiduadanosId(Long id){
-        return control.verCiudadanos().stream().filter(ciudadano -> ciudadano.getId()==id).toList();
+
+    public List<Ciudadano> verCiduadanosId(Long id) {
+        return control.verCiudadanos().stream().filter(ciudadano -> ciudadano.getId() == id).toList();
     }
-    
-    public Ciudadano verCiudadanoConcreto(String nombre, String apellido, String dni){
+
+    public Ciudadano verCiudadanoConcreto(String nombre, String apellido, String dni) {
         return control.verCiudadanos().stream()
-                .filter(ciudadano->
-                    ciudadano.getNombre().equalsIgnoreCase(nombre) &&
-                    ciudadano.getApellido().equalsIgnoreCase(apellido) &&
-                    ciudadano.getDni().equalsIgnoreCase(dni))
+                .filter(ciudadano
+                        -> ciudadano.getNombre().equalsIgnoreCase(nombre)
+                && ciudadano.getApellido().equalsIgnoreCase(apellido)
+                && ciudadano.getDni().equalsIgnoreCase(dni))
                 .findFirst().get();
     }
-    
-    public boolean compararCiuadano(Ciudadano ciud, Ciudadano comp){
-        return ciud.getNombre().equalsIgnoreCase(comp.getNombre())&&
-                ciud.getApellido().equalsIgnoreCase(comp.getApellido())&&
-                ciud.getDni().equalsIgnoreCase(comp.getDni());
+
+    public boolean compararCiuadano(Ciudadano ciud, Ciudadano comp) {
+        return ciud.getNombre().equalsIgnoreCase(comp.getNombre())
+                && ciud.getApellido().equalsIgnoreCase(comp.getApellido())
+                && ciud.getDni().equalsIgnoreCase(comp.getDni());
     }
-    
+
     //control Turno
-    public void crearTurno(Turno turno){
+    public void crearTurno(Turno turno) {
         control.crearTurno(turno);
     }
-    
-    public void aniadirTurno(LocalDate fecha, String descripcion, String nombreC, String apellidoC, String dniC){
+
+    public void aniadirTurno(LocalDate fecha, String descripcion, String nombreC, String apellidoC, String dniC) {
         Turno turno = new Turno();
         turno.setFecha(fecha);
         turno.setDescripcion(descripcion);
         turno.setEstado("En espera");
         turno.setCiudadano(verCiudadanoConcreto(nombreC, apellidoC, dniC));
-        
+
         crearTurno(turno);
     }
-    
-    public List<Turno> verTurnos(){
+
+    public List<Turno> verTurnos() {
         return control.verTurnos();
     }
-    
-    public List<Turno> verTurnosFiltrado(LocalDate fecha, String estado){
+
+    public List<Turno> verTurnosFecha(LocalDate fecha) {
         return control.verTurnos().stream()
-                .filter(turno -> 
-                        turno.getFecha().equals(fecha) && 
-                        turno.getEstado().equalsIgnoreCase(estado))
+                .filter(turno -> turno.getFecha().equals(fecha))
                 .toList();
     }
-    
-    public void editarTurno(Turno turno){
+
+    public List<Turno> verTurnosFiltrado(LocalDate fecha, String estado) {
+        return control.verTurnos().stream()
+                .filter(turno
+                        -> turno.getFecha().equals(fecha)
+                && turno.getEstado().equalsIgnoreCase(estado))
+                .toList();
+    }
+
+    public void editarTurno(Turno turno) {
         control.editarTurno(turno);
     }
 }
