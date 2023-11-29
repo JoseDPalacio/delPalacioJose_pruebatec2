@@ -10,8 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+        <title>Modificar Turno</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/modificarTurno.css">
     </head>
     <body class="modificar-estado">
         <h2>Datos Recogidos de la Fila</h2>
@@ -28,7 +28,8 @@
 
         <h3>Confirmado que ha sido atendido</h3>
         <br>
-        <form action="EditarTurnoSv" method="get">
+        <!-- Formulario oculto para recoger los datos y modificarlos en -->
+        <form action="EditarTurnoSv" method="post">
             <input type="hidden" name="idTurno" value="<%=turno.getId()%>">
             <input type="hidden" name="fechaTurno" value="<%=turno.getFecha()%>">
             <input type="hidden" name="descripcionTurno" value="<%=turno.getDescripcion()%>">

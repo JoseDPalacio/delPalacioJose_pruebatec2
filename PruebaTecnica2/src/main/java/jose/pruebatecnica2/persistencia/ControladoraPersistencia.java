@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package jose.pruebatecnica2.persistencia;
 
 import java.util.List;
@@ -10,15 +6,11 @@ import java.util.logging.Logger;
 import jose.pruebatecnica2.logica.Ciudadano;
 import jose.pruebatecnica2.logica.Turno;
 
-/**
- *
- * @author Usuario
- */
 public class ControladoraPersistencia {
     CiudadanoJpaController ciudadanojc = new CiudadanoJpaController();
     TurnoJpaController turnojc = new TurnoJpaController();
     
-    //Controladora Ciudadano
+    //Controladora de Ciudadano
     public void crearCiudadano(Ciudadano ciudadano){
         ciudadanojc.create(ciudadano);
     }
@@ -27,7 +19,7 @@ public class ControladoraPersistencia {
         return ciudadanojc.findCiudadanoEntities();
     }
     
-    //Controladora Turno
+    //Controladora de Turno
     public void crearTurno(Turno turno){
         turnojc.create(turno);
     }

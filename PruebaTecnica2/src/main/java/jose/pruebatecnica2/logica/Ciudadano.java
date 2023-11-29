@@ -1,4 +1,3 @@
-
 package jose.pruebatecnica2.logica;
 
 import java.io.Serializable;
@@ -8,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Ciudadano implements Serializable{
+public class Ciudadano implements Serializable {
+
+    //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,9 +17,11 @@ public class Ciudadano implements Serializable{
     private String apellido;
     private String dni;
 
+    //Constructor
     public Ciudadano() {
     }
 
+    //Getters && Setters
     public Long getId() {
         return id;
     }
@@ -46,6 +49,4 @@ public class Ciudadano implements Serializable{
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
-    
 }

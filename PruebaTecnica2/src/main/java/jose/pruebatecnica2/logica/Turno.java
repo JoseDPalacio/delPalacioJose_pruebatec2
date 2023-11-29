@@ -13,13 +13,13 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Turno implements Serializable{
+    //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate fecha;
     private String descripcion;
-    private String estado;
-    
+    private String estado; 
     @ManyToOne
     @JoinColumns({
         @JoinColumn(name = "ciudadano_nombre", referencedColumnName = "nombre"),
@@ -28,9 +28,11 @@ public class Turno implements Serializable{
     })
     private Ciudadano ciudadano;
 
+    //Constructor
     public Turno() {
     }
 
+    //Getters && Setters
     public Long getId() {
         return id;
     }
@@ -70,11 +72,4 @@ public class Turno implements Serializable{
     public void setCiudadano(Ciudadano ciudadano) {
         this.ciudadano = ciudadano;
     }
-
-    @Override
-    public String toString() {
-        return "Turno{" + "id=" + id + ", fecha=" + fecha + ", descripcion=" + descripcion + ", estado=" + estado + ", ciudadano=" + ciudadano + '}';
-    }
-    
-    
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package jose.pruebatecnica2.persistencia;
 
 import java.io.Serializable;
@@ -16,10 +12,6 @@ import javax.persistence.criteria.Root;
 import jose.pruebatecnica2.logica.Ciudadano;
 import jose.pruebatecnica2.persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author Usuario
- */
 public class CiudadanoJpaController implements Serializable {
 
     public CiudadanoJpaController(EntityManagerFactory emf) {

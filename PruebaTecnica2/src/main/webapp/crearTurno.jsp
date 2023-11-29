@@ -1,16 +1,10 @@
-<%-- 
-    Document   : crearTurno
-    Created on : 27 nov 2023, 12:02:05
-    Author     : Usuario
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Crear Turno</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/crearTurno.css">
     </head>
     <body class="crear-turno">
         <form action="CrearTurnoSv" method="post">
