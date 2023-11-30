@@ -18,17 +18,25 @@ public class IndexSv extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String botonPulsado = request.getParameter("boton");
-        
-        if (botonPulsado.equals("botonFecha")){
-            LocalDate fecha = LocalDate.parse(request.getParameter("fechaBusqueda"));
-            request.setAttribute("resultados", control.verTurnosFecha(fecha));
-        } else{
-            LocalDate fecha = LocalDate.parse(request.getParameter("fechaBusqueda2"));
+
+        if (botonPulsado.equals("botonFecha")) {
+            String fechaS = request.getParameter("fechaBusqueda1");
+            if (fechaS != null && !fechaS.isEmpty()) {
+                LocalDate fecha = LocalDate.parse(fechaS);
+                request.setAttribute("resultados", control.verTurnosFecha(fecha));
+                request.getRequestDispatcher("verTurnos.jsp").forward(request, response);
+            }
+
+        } else {
+            String fechaS = request.getParameter("fechaBusqueda2");
             String estado = request.getParameter("estadoTurno");
-            request.setAttribute("resultados", control.verTurnosFiltrado(fecha, estado));
+            if (fechaS != null && !fechaS.isEmpty() && estado!=null && !estado.isEmpty()) {
+                LocalDate fecha = LocalDate.parse(fechaS);
+                request.setAttribute("resultados", control.verTurnosFiltrado(fecha, estado));
+                request.getRequestDispatcher("verTurnos.jsp").forward(request, response);
+            }
+
         }
-           
-        request.getRequestDispatcher("verTurnos.jsp").forward(request, response);
 
     }
 

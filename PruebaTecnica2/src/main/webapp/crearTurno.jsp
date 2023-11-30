@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
         <title>Crear Turno</title>
         <link rel="stylesheet" type="text/css" href="resources/css/crearTurno.css">
     </head>
     <body class="crear-turno">
-        <form action="CrearTurnoSv" method="post">
+        <form action="CrearTurnoSv" method="post" accept-charset="UTF-8">
             <h2>Datos del Ciudadano</h2>
             <!-- Div para los datos del ciudadano -->
             <div>

@@ -2,6 +2,7 @@ package jose.pruebatecnica2.logica;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import jose.pruebatecnica2.persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -19,12 +20,13 @@ public class Controladora {
         ciudadano.setNombre(nombre);
         ciudadano.setApellido(apellido);
         ciudadano.setDni(dni);
-        if(control.verCiudadanos().isEmpty()){
+        //Comprobar si la tabla tiene datos
+        if (control.verCiudadanos().isEmpty()) {
             control.crearCiudadano(ciudadano);
         }
-        Ciudadano ciudComaparador = verCiudadanoConcreto(nombre, apellido, dni);
-        //Comprobar si la tabla tiene datos o si ya existe el ciudadano
-        if (!compararCiuadano(ciudadano, ciudComaparador)) {
+        // Verificar si el ciudadano ya existe antes de crearlo
+        Ciudadano ciudadanoExistente = verCiudadanoConcreto(nombre, apellido, dni);
+        if (ciudadanoExistente == null) {
             control.crearCiudadano(ciudadano);
         }
     }
@@ -35,18 +37,12 @@ public class Controladora {
 
     //Metodo para encontrar a un ciudadano concreto
     public Ciudadano verCiudadanoConcreto(String nombre, String apellido, String dni) {
-        return control.verCiudadanos().stream()
-                .filter(ciudadano
-                        -> ciudadano.getNombre().equalsIgnoreCase(nombre)
+        Optional<Ciudadano> ciudadanoOptional = control.verCiudadanos().stream()
+                .filter(ciudadano -> ciudadano.getNombre().equalsIgnoreCase(nombre)
                 && ciudadano.getApellido().equalsIgnoreCase(apellido)
                 && ciudadano.getDni().equalsIgnoreCase(dni))
-                .findFirst().get();
-    }
-
-    public boolean compararCiuadano(Ciudadano ciud, Ciudadano comp) {
-        return ciud.getNombre().equalsIgnoreCase(comp.getNombre())
-                && ciud.getApellido().equalsIgnoreCase(comp.getApellido())
-                && ciud.getDni().equalsIgnoreCase(comp.getDni());
+                .findFirst();
+        return ciudadanoOptional.orElse(null);
     }
 
     //control de Turno
@@ -55,9 +51,9 @@ public class Controladora {
     }
 
     //Metodo para recoger los datos del turno de la vista y cargarlos a la BBDD
-    public void aniadirTurno(String fechaTurno, String descripcionTurno, String nombreCiudadano, String apellidoCiudadano, String dniCiudadano) {
+    public void aniadirTurno(LocalDate fechaTurno, String descripcionTurno, String nombreCiudadano, String apellidoCiudadano, String dniCiudadano) {
         Turno turno = new Turno();
-        turno.setFecha(LocalDate.parse(fechaTurno));
+        turno.setFecha(fechaTurno);
         turno.setDescripcion(descripcionTurno);
         turno.setEstado("En espera");
         turno.setCiudadano(verCiudadanoConcreto(nombreCiudadano, apellidoCiudadano, dniCiudadano));
@@ -87,12 +83,12 @@ public class Controladora {
         control.editarTurno(turno);
     }
 
-    public void editarTurnoRecogido(String idTurno, String fechaTurno, String descripcionTurno, String estadoTurno,
+    public void editarTurnoRecogido(String idTurno, LocalDate fechaTurno, String descripcionTurno, String estadoTurno,
             String nombreCiudadano, String apellidoCiudadano, String dniCiudadano) {
 
         Turno turno = new Turno();
         turno.setId(Long.parseLong(idTurno));
-        turno.setFecha(LocalDate.parse(fechaTurno));
+        turno.setFecha(fechaTurno);
         turno.setDescripcion(descripcionTurno);
         turno.setEstado(estadoTurno);
         turno.setCiudadano(verCiudadanoConcreto(nombreCiudadano, apellidoCiudadano, dniCiudadano));

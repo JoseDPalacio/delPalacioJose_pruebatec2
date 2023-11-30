@@ -1,5 +1,3 @@
-
-
 <%@page import="java.util.List"%>
 <%@page import="jose.pruebatecnica2.logica.Turno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,15 +19,15 @@
         <section id="buscarTurnos">
             <form action="IndexSv" method="get">
                 <div>
-                    <label>Fecha de Búsqueda</label>
-                    <input type="date" name="fechaBusqueda">
+                    <label>Fecha de Búsqueda*</label>
+                    <input type="date" name="fechaBusqueda1">
                     <button type="submit" name="boton" value="botonFecha">Listar todos los Turnos por fecha concreta</button>
                 </div>
 
                 <div>
-                    <label>Fecha de Búsqueda</label>
+                    <label>Fecha de Búsqueda*</label>
                     <input type="date" name="fechaBusqueda2" >
-                    <label>Estado del Turno</label>
+                    <label>Estado del Turno*</label>
                     <select id="estado" name="estadoTurno">
                         <option value="En espera">En espera</option>
                         <option value="Ya atendido">Ya atendido</option>
