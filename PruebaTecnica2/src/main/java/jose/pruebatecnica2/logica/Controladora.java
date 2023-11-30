@@ -65,12 +65,14 @@ public class Controladora {
         return control.verTurnos();
     }
 
+    //Metodo que devuelve una lista de turnos filtrados por fecha
     public List<Turno> verTurnosFecha(LocalDate fecha) {
         return control.verTurnos().stream()
                 .filter(turno -> turno.getFecha().equals(fecha))
                 .toList();
     }
 
+    //Metodo que devuelve una lista de turnos filtrados por fecha y estado del tramite
     public List<Turno> verTurnosFiltrado(LocalDate fecha, String estado) {
         return control.verTurnos().stream()
                 .filter(turno
