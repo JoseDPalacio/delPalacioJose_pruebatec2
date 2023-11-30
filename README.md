@@ -10,13 +10,13 @@ Desarrollo de un programa de gestión de turnos para una entidad gubernamental, 
 
 ### Ejecucion de la aplicación
 
-1º Clonar este repositorio: 
+1. Clonar este repositorio: 
 ``` 
 git clone https://github.com/JoseDPalacio/delPalacioJose_pruebatec2
 ```
-2º Abrir el proyecto en tu IDE, ej: NetBeans
-
-3º Ejecutar el proyecto desde la clase index.jsp
+2. Abrir el proyecto en tu IDE, ej: NetBeans
+3. Cargar la base de datos de la carpeta BBDD
+4. Ejecutar el proyecto desde la clase index.jsp
 
 
 ### Funcionalidades principales
