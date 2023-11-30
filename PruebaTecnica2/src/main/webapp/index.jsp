@@ -27,7 +27,7 @@
                 <div>
                     <label>Fecha de Búsqueda*</label>
                     <input type="date" name="fechaBusqueda2" >
-                    <label>Estado del Turno*</label>
+                    <label>Estado del Tramite*</label>
                     <select id="estado" name="estadoTurno">
                         <option value="En espera">En espera</option>
                         <option value="Ya atendido">Ya atendido</option>
